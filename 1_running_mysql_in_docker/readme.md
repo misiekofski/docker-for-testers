@@ -1,4 +1,4 @@
-## Run databases locally
+## Run mysql locally
 
 ### Prerequisites:
 * MySQL Workbench, HeidiSQL or other SQL client 

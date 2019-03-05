@@ -1,5 +1,11 @@
 ## Run databases locally
 
+### Prerequisites:
+* MySQL Workbench, HeidiSQL or other SQL client 
+* Installed and running Docker on Windows 10
+
+### Excercises:
+
 1. After installing docker, run command: 
 
 ```posh

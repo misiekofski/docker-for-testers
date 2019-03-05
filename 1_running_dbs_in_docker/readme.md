@@ -22,7 +22,7 @@ docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
 
 3. We need to delete container and running it again with password set by running two commands:
 
-```console
+```posh
 docker rm test-mysql
 docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
 ```
@@ -30,19 +30,32 @@ docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
     And now we are stucked in terminal. We need to go out by pressing ctrl-c (in Windows 10).
 
 4. We're out of inside terminal, but the docker is still running. You can check it by running
-```zsh
+```posh
 docker ps
 ```
 
 5. Then you can learn more about this container by running:
-```bash
+```posh
 docker logs test-mysql
 docker inspect test-mysql
 ```
 
-6. Now you can open MySQL Workbench or HeidiSQL and connect to database:
+6. Now we need to stop container and delete it to get our name back
 
-        host: 10.0.75.2 - on Windows 10
-        user: root
-        password: mypassword
+```posh
+docker stop test-mysql
+docker rm test-mysql
+```
+
+7. And run it properly, this time detached
+
+```posh
+docker run --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
+```
+
+8. Now you can open MySQL Workbench or HeidiSQL and connect to database:
+
+        host: 10.0.75.2 - on Windows 10 
+        user: root 
+        password: mypassword 
         port: 3306 (default)

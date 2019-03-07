@@ -53,15 +53,33 @@ docker stop test-mysql
 docker rm test-mysql
 ```
 
-7. And run it properly, this time detached
+7. And run it properly, this time detached and with redirected ports (as docker has it's own network we need to map ports). If you do this without it, it won't work.
 
 ```posh
-docker run --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
+docker run -p 3306:3306 --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
 ```
 
-8. Now you can open MySQL Workbench or HeidiSQL and connect to database:
+8. Now you can open MySQL Workbench or HeidiSQL and try connect to database:
 
-        host: 10.0.75.2 - on Windows 10 
+        host: localhost
         user: root 
         password: mypassword 
         port: 3306 (default)
+
+9. You should have access to root, and you can now run as many queries as you want. Some of examples you can see below:
+
+```mysql
+CREATE DATABASE psingwiny;
+
+USE psingwiny;
+
+CREATE TABLE psingwin (
+    PsingwinID INT AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(200),
+    color VARCHAR(50),
+    version DOUBLE
+);
+
+INSERT INTO psingwin (firstname, color, version)
+VALUES ('Pszemek', 'Ruszofy','21.37');
+```

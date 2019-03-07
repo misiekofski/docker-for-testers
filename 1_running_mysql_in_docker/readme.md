@@ -6,7 +6,7 @@
 
 ### Excercises:
 
-1. After installing docker, run command: 
+1. After installing docker, run command which will download image of mysql and run container with this image: 
 
 ```posh
 docker run --name=test-mysql mysql
@@ -27,6 +27,8 @@ docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
     Oops, another error. We tried to run another container with the same name as container already running.
 
 3. We need to delete container and running it again with password set by running two commands:
+
+- -env is for environmental variable, which sets up mysql root password (which we use later to login to database)
 
 ```posh
 docker rm test-mysql
@@ -53,11 +55,15 @@ docker stop test-mysql
 docker rm test-mysql
 ```
 
-7. And run it properly, this time detached and with redirected ports (as docker has it's own network we need to map ports). If you do this without it, it won't work.
-
+7. And now to run it properly:
 ```posh
 docker run -p 3306:3306 --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
 ```
+- -d is for detached run (that means run it and leave the docker image back to console)
+- -p is for mapping ports (as docker has it's own network we need to map ports). 
+
+If you do this without mapping ports you won't be able to connect to localhost (and would need to find docker IP which on windows 10 will be: 10.0.75.2 - but then root must login from localhost because mysql demands it by default)
+
 
 8. Now you can open MySQL Workbench or HeidiSQL and try connect to database:
 
@@ -82,4 +88,10 @@ CREATE TABLE psingwin (
 
 INSERT INTO psingwin (firstname, color, version)
 VALUES ('Pszemek', 'Ruszofy','21.37');
+```
+
+10. Optional: you also can login to bash shell of container using this command:
+
+```posh
+docker exec -it test-mysql /bin/bash
 ```

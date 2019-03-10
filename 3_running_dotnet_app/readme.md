@@ -1,4 +1,4 @@
-## Run dotnet application
+### Run dotnet application
 
 1. We need to create Docker file (this will be one Dockerfile but with two dockers). First we need to create docker which build our application. Create Dockerfile inside `/code` subfolder.
 

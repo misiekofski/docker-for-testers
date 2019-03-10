@@ -5,7 +5,7 @@
 2. Go into `/co-by-tu-wypic` folder and run docker command (-it means interactive console with /bin/bash)
 
 ```posh
-docker run -it -p 8015:4200 -v %cd%:/var/www -w "/var/www" node /bin/bash
+docker run -it -p 4200:4200 -e CHOKIDAR_USEPOLLING=true -v %cd%:/var/www -w "/var/www" node /bin/bash
 ```
 
 3. Then linux console is opened. We need to run one by one

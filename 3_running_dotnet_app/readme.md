@@ -1,4 +1,4 @@
-### Run dotnet application
+## Run dotnet application
 
 1. We need to create Docker file (this will be one Dockerfile but with two dockers). First we need to create docker which build our application. Create Dockerfile inside `/code` subfolder.
 
@@ -35,5 +35,5 @@ docker build -t mywebapp .
 4. And run it
 
 ```posh
-docker run -d -p 8080:80 --name vodkaapp mywebapp
+docker run -d -p 8080:80 --name mywebapp mywebapp
 ```

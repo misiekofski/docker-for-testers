@@ -35,5 +35,5 @@ docker build -t mywebapp .
 4. And run it
 
 ```posh
-docker run -d -p 8080:80 --name mywebapp mywebapp
+docker run -d -p 8080:80 --name pijakapp mywebapp
 ```

@@ -13,7 +13,7 @@
 docker run -it -p 4200:4200 -e CHOKIDAR_USEPOLLING=true -v %cd%:/var/www -w "/var/www" node /bin/bash
 ```
 3. We should see console in node image (linux + already installed node.js):
-![Root console for docker node image](\img\rootconsole.png?raw=true "Set up docker")
+![Root console for docker node image](/img/rootconsole.png?raw=true "Set up docker")
 
 4. Then inside consoel we need to run one by one
 

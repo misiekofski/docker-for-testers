@@ -19,19 +19,19 @@ COPY ./sqls/ /docker-entrypoint-initdb.d/
 
 3. When you are in console in folder with second excercise you can run command:
 
-```posh
+```ps
 docker build -t pijsql .
 ```
 
 4. And then you need to run it with
 
-```posh
+```ps
 docker run -d -p 3306:3306 --name pijsql -e MYSQL_ROOT_PASSWORD=#tylkopiwo pijsql
 ```
 
 5. If you haven't stopped and removed previous container, you will have conflict with ports number. You need to use commands:
 
-```posh
+```ps
 docker stop test-mysql
 docker rm test-mysql
 ```

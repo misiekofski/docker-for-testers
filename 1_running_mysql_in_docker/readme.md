@@ -8,7 +8,7 @@
 
 1. After installing docker, run command which will download image of mysql and run container with this image: 
 
-```posh
+```ps
 docker run --name=test-mysql mysql
 ```
 
@@ -20,7 +20,7 @@ docker run --name=test-mysql mysql
 
 2. As you see you need to set some passwords, or allow mysql to run without password. Seems like a good idea, right? Shall we proceed with setting environment variables?
 
-```posh
+```ps
 docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
 ```
 
@@ -30,7 +30,7 @@ docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
 
 - -env is for environmental variable, which sets up mysql root password (which we use later to login to database)
 
-```posh
+```ps
 docker rm test-mysql
 docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
 ```
@@ -38,25 +38,25 @@ docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
     And now we are stucked in terminal. We need to go out by pressing ctrl-c (in Windows 10).
 
 4. We're out of inside terminal, but the docker is still running. You can check it by running
-```posh
+```ps
 docker ps
 ```
 
 5. Then you can learn more about this container by running:
-```posh
+```ps
 docker logs test-mysql
 docker inspect test-mysql
 ```
 
 6. Now we need to stop container and delete it to get our name back
 
-```posh
+```ps
 docker stop test-mysql
 docker rm test-mysql
 ```
 
 7. And now to run it properly:
-```posh
+```ps
 docker run -p 3306:3306 --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
 ```
 - -d is for detached run (that means run it and leave the docker image back to console)
@@ -92,6 +92,6 @@ VALUES ('Pszemek', 'Ruszofy','21.37');
 
 10. Optional: you also can login to bash shell of container using this command:
 
-```posh
+```ps
 docker exec -it test-mysql /bin/bash
 ```

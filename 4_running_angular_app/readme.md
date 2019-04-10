@@ -9,9 +9,16 @@
 - `-v %cd%:/var/www` says we are mapping our current directory (in which we run our command) to directory inside container /var/www which we set in `-w /var/www` as working directory for angular application
 - `node` is a name of docker image we will run and `/bin/bash` says run a linux console as a root
 
+Code for PowerShell
 ```posh
-docker run -it -p 4200:4200 -e CHOKIDAR_USEPOLLING=true -v %cd%:/var/www -w "/var/www" node /bin/bash
+docker run -it -p 4200:4200 -e CHOKIDAR_USEPOLLING=true -v ${pwd}:/var/www -w "/var/www" node:8.15.1-alpine /bin/bash
 ```
+
+Code for cmd (windows console)
+```posh
+docker run -it -p 4200:4200 -e CHOKIDAR_USEPOLLING=true -v %cd%:/var/www -w "/var/www" node:8.15.1-alpine /bin/bash
+```
+
 3. We should see console in node image (linux + already installed node.js):
 ![Root console for docker node image](./img/rootconsole.png?raw=true "Set up docker")
 

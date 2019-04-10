@@ -15,6 +15,7 @@ FROM mysql
 # All scripts in docker-entrypoint-initdb.d/ are automatically
 # executed during container startup
 COPY ./sqls/ /docker-entrypoint-initdb.d/
+ENV MYSQL_ROOT_PASSWORD=#tylkopiwo
 ```
 
 3. When you are in console in folder with second excercise you can run command:
@@ -26,7 +27,7 @@ docker build -t pijsql .
 4. And then you need to run it with
 
 ```ps
-docker run -d -p 3306:3306 --name pijsql -e MYSQL_ROOT_PASSWORD=#tylkopiwo pijsql
+docker run -d -p 3306:3306 --name pijsql pijsql
 ```
 
 5. If you haven't stopped and removed previous container, you will have conflict with ports number. You need to use commands:

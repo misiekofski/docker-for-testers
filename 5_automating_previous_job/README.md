@@ -11,10 +11,11 @@ Let's call this time this file: Docker-angular
 ```Dockerfile
 FROM node
 RUN npm install -g @angular/cli
+ENV CHOKIDAR_USEPOLLING=true
 ```
 
 3. Build docker with angular with `docker build -f Dockerfile-angular -t ourangular .`
 
 4. You can check if that was build with `docker images`. You should have seen `ourangular` image, which already has @angular/cli installed.
 
-5. Then you can run (it will store and speed up a bit running app for next time) by `docker run -p 4200:4200 -e CHOKIDAR_USEPOLLING=true -v %cd%:/var/www -w "/var/www" ourangular npm install && ng serve --host 0.0.0.0`
+5. Then you can run (it will store and speed up a bit running app for next time) by `docker run -p 4200:4200 -v ${pwd}:/var/www -w "/var/www" ourangular npm install && ng serve --host 0.0.0.0`

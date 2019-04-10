@@ -11,12 +11,12 @@
 
 Code for PowerShell
 ```posh
-docker run -it -p 4200:4200 -e CHOKIDAR_USEPOLLING=true -v ${pwd}:/var/www -w "/var/www" node:8.15.1-alpine /bin/bash
+docker run -it -p 4200:4200 -e CHOKIDAR_USEPOLLING=true -v ${pwd}:/var/www -w "/var/www" node /bin/bash
 ```
 
 Code for cmd (windows console)
 ```posh
-docker run -it -p 4200:4200 -e CHOKIDAR_USEPOLLING=true -v %cd%:/var/www -w "/var/www" node:8.15.1-alpine /bin/bash
+docker run -it -p 4200:4200 -e CHOKIDAR_USEPOLLING=true -v %cd%:/var/www -w "/var/www" node /bin/bash
 ```
 
 3. We should see console in node image (linux + already installed node.js):

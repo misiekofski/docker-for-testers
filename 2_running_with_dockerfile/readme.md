@@ -1,7 +1,8 @@
 ## Run postgres locally
 
 ### Prerequisites:
-* Installed and running Docker on Windows 10
+
+- Installed and running Docker on Windows 10
 
 ### Excercises:
 
@@ -24,7 +25,7 @@ ENV MYSQL_ROOT_PASSWORD=#tylkopiwo
 docker build -t pijsql .
 ```
 
-4. And then you need to run it with
+4. And then you need to run it with `docker run -p <host_port>:<container_port>`
 
 ```ps
 docker run -d -p 3306:3306 --name pijsql pijsql
@@ -36,4 +37,5 @@ docker run -d -p 3306:3306 --name pijsql pijsql
 docker stop test-mysql
 docker rm test-mysql
 ```
+
 5. Then we can again run MySQL Workbench and connect to check if data was actually created in DB.

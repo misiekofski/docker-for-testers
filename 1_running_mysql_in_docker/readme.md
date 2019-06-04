@@ -1,20 +1,21 @@
 ## Run mysql locally
 
 ### Prerequisites:
-* MySQL Workbench, HeidiSQL or other SQL client 
-* Installed and running Docker on Windows 10
+
+- MySQL Workbench, HeidiSQL or other SQL client
+- Installed and running Docker on Windows 10
 
 ### Excercises:
 
-1. After installing docker, run command which will download image of mysql and run container with this image: 
+1. After installing docker, run command which will download image of mysql and run container with this image:
 
 ```ps
 docker run --name=test-mysql mysql
 ```
 
-    It will pull mysql server (it will take some time) and tries to run it in docker. 
+    It will pull mysql server (it will take some time) and tries to run it in docker.
     It will also show you error message:
-        
+
     error: database is uninitialized and password option is not specified
     You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD
 
@@ -38,11 +39,13 @@ docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
     And now we are stucked in terminal. We need to go out by pressing ctrl-c (in Windows 10).
 
 4. We're out of inside terminal, but the docker is still running. You can check it by running
+
 ```ps
 docker ps
 ```
 
 5. Then you can learn more about this container by running:
+
 ```ps
 docker logs test-mysql
 docker inspect test-mysql
@@ -55,24 +58,25 @@ docker stop test-mysql
 docker rm test-mysql
 ```
 
-7. And now to run it properly:
+7. And now to run it properly you should use `docker run -p <host_port>:<container_port>`:
+
 ```ps
 docker run -p 3306:3306 --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
 ```
+
 - -d is for detached run (that means run it and leave the docker image back to console)
-- -p is for mapping ports (as docker has it's own network we need to map ports). 
+- -p is for mapping ports (as docker has it's own network we need to map ports).
 
 If you do this without mapping ports you won't be able to connect to localhost (and would need to find docker IP which on windows 10 will be: 10.0.75.2 - but then root must login from localhost because mysql demands it by default)
 
-
-8. Now you can open MySQL Workbench or HeidiSQL and try connect to database:
+8.  Now you can open MySQL Workbench or HeidiSQL and try connect to database:
 
         host: localhost
-        user: root 
-        password: mypassword 
+        user: root
+        password: mypassword
         port: 3306 (default)
 
-9. You should have access to root, and you can now run as many queries as you want. Some of examples you can see below:
+9.  You should have access to root, and you can now run as many queries as you want. Some of examples you can see below:
 
 ```mysql
 CREATE DATABASE psingwiny;

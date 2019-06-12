@@ -7,22 +7,6 @@
 
 ### Excercises:
 
-0. Run your container with:
-```ps
-docker run -d -p 81:8080 swaggerapi/swagger-editor
-```
-and go to localhost:81 - yay it works
-
-Then you can check internal IP of container (although you won't be able to access it because of default Win10 rules)
-```ps
-docker inspect xx
-```
-
-If you run below command, you should be able to ping your internal containers IP once you run it as admin:
-```ps
-route /P add 172.17.0.0 MASK 255.255.0.0 10.0.75.2
-```
-
 1. After installing docker, run command which will download image of mysql and run container with this image:
 
 ```ps

@@ -27,5 +27,8 @@ Run cmd as admin, and paste this command.
 route /P add 172.17.0.0 MASK 255.255.0.0 10.0.75.2
 ```
 
-5. Now you can access it, and read more about docker run command
+6. Once you access it, you can copy content of API.yaml to editor to see how Swagger helps us in testing API
+
+7. Now you can access it, and read more about docker run command
+[swagger-editor](https://github.com/swagger-api/swagger-editor)
 [docker run](https://docs.docker.com/engine/reference/commandline/run/)

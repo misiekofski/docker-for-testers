@@ -3,7 +3,6 @@
 ### Prerequisites:
 
 - MySQL Workbench, HeidiSQL or other SQL client
-- Installed and running Docker on Windows 10
 
 ### Excercises:
 

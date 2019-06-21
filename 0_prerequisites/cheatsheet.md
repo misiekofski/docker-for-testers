@@ -2,12 +2,12 @@
 Those commands work propery on git bash or powershell. Do not use simple windows terminal.
 
 ## Tips and tricks
-Kill all containers: `docker stop $(docker ps -a -q)`
-Remove all containers (force kills all containers even running): `docker rm -f $(docker ps -a -q)`
-Remove all images: `docker rmi $(docker images -q)`
-Remove all unused stuff (beware!): `docker system prune`
-Delete stopped containers `docker rm -v $(docker ps -a -q -f status=exited)`
-First stop then delete containers: `docker stop $(docker ps -aq) && docker rm -v $(docker ps -aq)`
+- Kill all containers: `docker stop $(docker ps -a -q)`
+- Remove all containers (force kills all containers even running): `docker rm -f $(docker ps -a -q)`
+- Remove all images: `docker rmi $(docker images -q)`
+- Remove all unused stuff (beware!): `docker system prune`
+- Delete stopped containers `docker rm -v $(docker ps -a -q -f status=exited)`
+- First stop then delete containers: `docker stop $(docker ps -aq) && docker rm -v $(docker ps -aq)`
 
 
 ## Start and stop

@@ -6,11 +6,3 @@
 5. Run Docker
 6. [WIN10 step] Set up docker by going into settings in whale tray icon and sharing your c: drive
 ![Share c: drive on Win 10](./img/sharedrive.png?raw=true "Set up docker")
-
-
-## Docker cheatsheet
-Those commands work propery on git bash or powershell. Do not use simple windows terminal.
-
-
-Kill all containers: `docker stop $(docker ps -a -q)` 
-Remove all containers: `docker rm $(docker ps -a -q)`

@@ -32,7 +32,7 @@ docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
 
 ```ps
 docker rm test-mysql
-docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=mypassword -d mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 ```
 
     And now we are stucked in terminal. We need to go out by pressing ctrl-c (in Windows 10).
@@ -60,7 +60,7 @@ docker rm test-mysql
 7. And now to run it properly you should use `docker run -p <host_port>:<container_port>`:
 
 ```ps
-docker run -p 3306:3306 --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
+ docker run -p 3306:3306 --name=test-mysql -e MYSQL_ROOT_PASSWORD=mypassword -d
 ```
 
 - -d is for detached run (that means run it and leave the docker image back to console)
@@ -93,7 +93,16 @@ INSERT INTO psingwin (firstname, color, version)
 VALUES ('Pszemek', 'Ruszofy','21.37');
 ```
 
-10. Optional: you also can login to bash shell of container using this command:
+10. You can now stop container by it's name - check if connection is not available (server is down) and run it again (and the data is still there!)
+```
+docker stop test-mysql
+docker start test-mysql
+```
+
+`docker rm test-mysql` would delete data though (because of the volumes which we will cover in next chapters)
+
+
+11. Optional: you also can login to bash shell of container using this command:
 
 ```ps
 docker exec -it test-mysql /bin/bash

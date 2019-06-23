@@ -1,5 +1,7 @@
 ## docker-compose and yaml files
 
+## docker-compose is for wrapping many Dockerfiles into one environment
+
 1. In our folder there is app.py - this is an application written in Python which will use redis (redis is a host, and we are using default port = `6379`).
 
 2. What we want to do is to run two containers and to be able them to communicate. What is important is that in app.py there is an important line:

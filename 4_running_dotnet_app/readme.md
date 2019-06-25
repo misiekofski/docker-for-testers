@@ -16,7 +16,7 @@ COPY . ./
 RUN dotnet publish -c Release -o out
 ```
 
-2. Then we can copy builded project to out another container (we will copy just binaries, without source code).
+2. Then we can copy builded project to out another container (we will copy just binaries, without source code). This content will be with the same Dockerfile as script from step 1.
 
 ```Dockerfile
 # Build runtime image

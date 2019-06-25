@@ -1,21 +1,48 @@
 ## Now we are gonna automate previous lesson
 
-1. Create from node image another image which will have preinstalled `@angular/cli`
-
-2. Run container based on newly built container from step 1 and run `npm install` + `ng serve`
-- don't forget to mount volume to current folder which is `%cd%` in command line and `$PWD` in Powershell / Bash
-- remember to stop and remove previous container because it uses port `4200`
-- use Dockerfile
-
-Let's call this time this file: Docker-angular
+1. We need to create Dockerfile
 ```Dockerfile
-FROM node
-RUN npm install -g @angular/cli
-ENV CHOKIDAR_USEPOLLING=true
+# base image
+FROM node:12.2.0
+
+# install chrome for protractor tests
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+RUN apt-get update && apt-get install -yq google-chrome-stable
+
+# set working directory
+WORKDIR /app
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# install and cache app dependencies
+COPY package.json /app/package.json
+RUN npm install
+RUN npm install -g @angular/cli@7.3.9
+
+# add app
+COPY . /app
+
+# start app
+CMD ng serve --host 0.0.0.0
 ```
 
-3. Build docker with angular with `docker build -f Dockerfile-angular -t ourangular .`
+2. We can create .dockerignore (it's just like .gitignore but for docker)
+```
+node_modules
+.git
+.gitignore
+```
 
-4. You can check if that was build with `docker images`. You should have seen `ourangular` image, which already has @angular/cli installed.
+3. Build and tag Docker image
+```ps
+docker build -t example:dev
+```
 
-5. Then you can run (it will store and speed up a bit running app for next time) by `docker run -p 4200:4200 -v ${pwd}:/var/www -w "/var/www" ourangular npm install && ng serve --host 0.0.0.0`
+4. And then run it:
+```ps
+docker run -v ${pwd}:/app -v /app/node_modules -p 4201:4200 --rm example:dev
+```
+
+- `--rm` removes the container and volumes if the container exists

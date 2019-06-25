@@ -6,7 +6,7 @@
 - `-it` means interactive (we will have access to bash inside container)
 - `-p 4200:4200` forwards ports from our computer to docker network
 - `-e CHOKIDAR_USEPOLLING=true` is environment variable, which will poll every change we will make in code to docker
-- `-v %cd%:/var/www` says we are mapping our current directory (in which we run our command) to directory inside container /var/www which we set in `-w /var/www` as working directory for angular application
+- `-v %cd%:/var/www` says we are mapping our current directory (in which we run our command) to directory inside container /var/www which was set in `-w /var/www` as working directory for angular application 
 - `node` is a name of docker image we will run and `/bin/bash` says run a linux console as a root
 
 Code for PowerShell

@@ -32,7 +32,7 @@ docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
 
 ```ps
 docker rm test-mysql
-docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=mypassword -d mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=mypassword mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 ```
 
     And now we are stucked in terminal. We need to go out by pressing ctrl-c (in Windows 10).
@@ -60,7 +60,7 @@ docker rm test-mysql
 7. And now to run it properly you should use `docker run -p <host_port>:<container_port>`:
 
 ```ps
- docker run -p 3306:3306 --name=test-mysql -e MYSQL_ROOT_PASSWORD=mypassword -d
+ docker run -p 3306:3306 --name=test-mysql -e MYSQL_ROOT_PASSWORD=mypassword -d mysql
 ```
 
 - -d is for detached run (that means run it and leave the docker image back to console)

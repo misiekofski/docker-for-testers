@@ -1,4 +1,4 @@
-## Run postgres locally
+## Run mysql with data in it
 
 ### Prerequisites:
 

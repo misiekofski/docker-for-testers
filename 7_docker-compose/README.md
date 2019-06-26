@@ -19,6 +19,7 @@ FROM python:3.6-alpine
 ADD . /code
 WORKDIR /code
 RUN pip install -r requirements.txt
+RUN chmod 644 app.py
 CMD ["python", "app.py"]
 ```
 
@@ -35,11 +36,16 @@ services:
     image: "redis:alpine"
 ```
 
-4. Build and run app with Compose by entering `docker-compose up -d` in command line. What it will do it will run two services: 
+4. Run `docker-compose` to see list of commands.
+
+5. Build and run app with Compose by entering `docker-compose up` in command line. What it will do it will run two services: 
 - redis
 - python app in flask
-- `-d` is for detached
 
-5. Go to http://localhost:5000 and refresh site few times.
+6. Go to http://localhost:5000 and refresh site few times.
 
-6. When you want to stop it, run `docker-compose down` in command line
+7. You can now press CTRL+c to stop service (after few F5 clicks). And then run again `docker-compose up -d` which will run in detached mode.
+
+8. Go again http://localhost:5000 and refresh site few times.
+
+9. When you want to stop it, run `docker-compose down` in command line

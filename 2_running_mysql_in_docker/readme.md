@@ -90,17 +90,17 @@ CREATE TABLE psingwin (
 );
 
 INSERT INTO psingwin (firstname, color, version)
-VALUES ('Pszemek', 'Ruszofy','21.37');
+VALUES ('Pinky', 'Psingwin','21.37');
 ```
 
 10. You can now stop container by it's name - check if connection is not available (server is down) and run it again (and the data is still there!)
+
 ```
 docker stop test-mysql
 docker start test-mysql
 ```
 
 `docker rm test-mysql` would delete data though (because of the volumes which we will cover in next chapters)
-
 
 11. Optional: you also can login to bash shell of container using this command:
 

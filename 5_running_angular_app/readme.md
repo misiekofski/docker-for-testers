@@ -3,24 +3,33 @@
 1. This time we hook up our source code on windows into docker container. First check with `docker images` if you have node image downloaded. If not use `docker pull node`
 
 2. Go into `/co-by-tu-wypic` folder and run docker command (-it means interactive console with /bin/bash)
+
 - `-it` means interactive (we will have access to bash inside container)
 - `-p 4200:4200` forwards ports from our computer to docker network
 - `-e CHOKIDAR_USEPOLLING=true` is environment variable, which will poll every change we will make in code to docker
-- `-v %cd%:/var/www` says we are mapping our current directory (in which we run our command) to directory inside container /var/www which was set in `-w /var/www` as working directory for angular application 
+- `-v %cd%:/var/www` says we are mapping our current directory (in which we run our command) to directory inside container /var/www which was set in `-w /var/www` as working directory for angular application
 - `node` is a name of docker image we will run and `/bin/bash` says run a linux console as a root
 
 Code for PowerShell
+
 ```posh
 docker run -it -p 4200:4200 -e CHOKIDAR_USEPOLLING=true -v ${pwd}:/var/www -w "/var/www" node /bin/bash
 ```
 
 Code for cmd (windows console)
+
 ```posh
 docker run -it -p 4200:4200 -e CHOKIDAR_USEPOLLING=true -v %cd%:/var/www -w "/var/www" node /bin/bash
 ```
 
+Code for ubuntu/macos
+
+```bash
+docker run -it -p 4200:4200 -e CHOKIDAR_USEPOLLING=true -v $(pwd):/var/www -w "/var/www" node /bin/bash
+```
+
 3. We should see console in node image (linux + already installed node.js):
-![Root console for docker node image](./img/rootconsole.png?raw=true "Set up docker")
+   ![Root console for docker node image](./img/rootconsole.png?raw=true "Set up docker")
 
 4. Then inside consoel we need to run one by one
 

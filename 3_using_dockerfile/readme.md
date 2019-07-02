@@ -19,7 +19,7 @@ COPY ./sqls/ /docker-entrypoint-initdb.d/
 ENV MYSQL_ROOT_PASSWORD=#tylkopiwo
 ```
 
-3. When you are in console in folder with second excercise you can run command:
+3. When you are in console in folder with this excercise you can run command:
 
 ```ps
 docker build -t pijsql .
